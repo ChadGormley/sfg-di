@@ -1,7 +1,5 @@
 package guru.springframework.sfgdi.config;
 
-import com.springframework.pets.CatPetService;
-import com.springframework.pets.DogPetService;
 import com.springframework.pets.PetService;
 import com.springframework.pets.PetServiceFactory;
 import guru.springframework.sfgdi.datasource.FakeDataSource;
@@ -11,7 +9,6 @@ import guru.springframework.sfgdi.services.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 
-@PropertySource("classpath:datasource.properties")
 // The import resource annotation can go here or on the main application class
 @ImportResource("classpath:sfgdi-config.xml")
 @Configuration
