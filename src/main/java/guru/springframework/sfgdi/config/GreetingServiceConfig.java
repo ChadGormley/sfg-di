@@ -7,11 +7,10 @@ import com.springframework.pets.PetServiceFactory;
 import guru.springframework.sfgdi.repositories.EnglishGreetingRepository;
 import guru.springframework.sfgdi.repositories.EnglishGreetingRepositoryImpl;
 import guru.springframework.sfgdi.services.*;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.*;
 
+// The import resource annotation can go here or on the main application class
+@ImportResource("classpath:sfgdi-config.xml")
 @Configuration
 public class GreetingServiceConfig {
 
@@ -57,10 +56,11 @@ public class GreetingServiceConfig {
 
     // If you own the class, you would use the @Service in that class.  If you are using third party classes
     // this is the way you would bring it in.
-    @Bean
-    ConstructorGreetingService constructorGreetingService() {
-        return new ConstructorGreetingService();
-    }
+
+    //@Bean --> this is now being done in sfgdi-config.xml
+    //ConstructorGreetingService constructorGreetingService() {
+    //    return new ConstructorGreetingService();
+    //}
 
     @Bean
     PropertyInjectedGreetingService propertyInjectedGreetingService() {
