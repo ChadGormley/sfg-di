@@ -1,17 +1,34 @@
 package guru.springframework.sfgdi.config;
 
-import guru.springframework.sfgdi.services.ConstructorGreetingService;
-import guru.springframework.sfgdi.services.PropertyInjectedGreetingService;
-import guru.springframework.sfgdi.services.SetterInjectedGreetingService;
+import guru.springframework.sfgdi.services.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 
 @Configuration
 public class GreetingServiceConfig {
 
+    @Profile({"ES", "default"})
+    @Bean("i18nService") // this give the bean a specific name, because the default would be i18nSpanishGreetingService
+    I18nSpanishGreetingService i18nSpanishGreetingService() {
+        return new I18nSpanishGreetingService();
+    }
+
+    @Profile("EN")
+    @Bean
+    I18nEnglishGreetingService i18nService() {
+        return new I18nEnglishGreetingService();
+    }
+
+    @Primary
+    @Bean
+    PrimaryGreetingService primaryGreetingService() {
+        return new PrimaryGreetingService();
+    }
+
     // If you own the class, you would use the @Service in that class.  If you are using third party classes
     // this is the way you would bring it in.
-
     @Bean
     ConstructorGreetingService constructorGreetingService() {
         return new ConstructorGreetingService();

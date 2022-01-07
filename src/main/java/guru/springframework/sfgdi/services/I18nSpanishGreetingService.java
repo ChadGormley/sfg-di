@@ -1,10 +1,7 @@
 package guru.springframework.sfgdi.services;
 
-import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Service;
-
-@Profile({"ES", "default"}) // the "default" causes spring to use this profile if one isn't specified in the application.properties
-@Service("i18nService")
+//@Profile({"ES", "default"}) // the "default" causes spring to use this profile if one isn't specified in the application.properties
+//@Service("i18nService") // moved to Java configuration GreetingServiceCofig.java
 public class I18nSpanishGreetingService  implements GreetingService {
     @Override
     public String sayGreeting() {
