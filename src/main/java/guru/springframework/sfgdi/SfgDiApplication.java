@@ -4,7 +4,14 @@ import guru.springframework.sfgdi.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
+/*
+ Because we moved CatPetService, DogPetService, and PetService to a package structure "com.springframework.pets" outside the default one ( where
+ the main function is "guru.springframework.sfgdi"), we need to add the @ComponentScan and list out the packages that need to be scanned
+ when spring starts up.
+ */
+@ComponentScan(basePackages = {"guru.springframework.sfgdi", "com.springframework.pets"})
 @SpringBootApplication
 public class SfgDiApplication {
 
